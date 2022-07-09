@@ -1,0 +1,150 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+*::selection {
+  background-color: yellow;
+  color: rgba(255, 22, 22, 0.781);
+}
+
+body {
+  background-image: url("../dodaci/m10.jpg");
+  background-size: 100vw 100vh;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 600;
+}
+
+h1 {
+  background-color: rgba(83, 255, 83, 0.438);
+  font-size: 40px;
+  text-align: center;
+}
+
+main {
+  padding: -20px 20px 20px 20px;
+  width: 65%;
+  border-radius: 10px;
+  position: absolute;
+  background-color: rgba(83, 255, 83, 0.685);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+main article {
+  display: flex;
+  justify-content: center;
+  padding: 20px 10px;
+  font-size: 30px;
+}
+
+main label {
+  display: inline-block;
+  width: 330px;
+}
+
+main form {
+  display: grid;
+  grid-template-columns: [inputs1] 100%;
+  grid-template-rows: [row1] 1fr [row2] 1fr [row3] 1fr;
+}
+
+main h2 {
+  font-size: 40px;
+  text-align: center;
+  padding: 16px;
+}
+
+main #start {
+  grid-column-start: inputs1;
+  grid-column-end: inputs3;
+  grid-row-start: row4;
+  text-align: center;
+}
+
+main #datefrom,
+main #dateto,
+main #alpha {
+  grid-column-start: inputs1;
+}
+
+main #DOsC,
+main #S {
+  grid-column-start: inputs2;
+}
+
+main #datefrom,
+main #DOsC {
+  grid-row-start: row1;
+}
+
+main #dateto,
+main #S {
+  grid-row-start: row2;
+}
+
+main #radio {
+  grid-row-start: row3;
+}
+
+main button {
+  height: 36px;
+  width: 30%;
+  font-size: 25px;
+  background-color: rgba(39, 128, 163, 0.651);
+  border: 1px solid rgba(94, 93, 93, 0.863);
+  border-radius: 5px;
+}
+
+main button:focus,
+main button:active,
+main button:hover {
+  border: 2px solid rgba(3, 3, 3, 0.863);
+  background-color: rgba(39, 128, 163, 0.521);
+}
+
+main input,
+main select {
+  width: calc(80% - 200px);
+  background-color: rgba(255, 255, 255, 0.205);
+  outline: none;
+  border: 1px solid rgba(94, 93, 93, 0.863);
+  height: 36px;
+  font-size: 25px;
+  border-radius: 5px;
+}
+
+main input:focus,
+main input:active,
+main input:hover,
+main select:focus,
+main select:active,
+main select:hover {
+  border: 2px solid rgba(3, 3, 3, 0.863);
+  background-color: rgba(255, 255, 255, 0.041);
+}
+
+main input option,
+main select option {
+  background-color: rgba(255, 255, 255, 0.205);
+}
+
+main .unit {
+  display: inline-block;
+  width: 80px;
+  padding-left: 4px;
+}
+
+main #message {
+  color: red;
+  text-align: center;
+  font-size: 26px;
+}
+#radio {
+	font-size:25px;
+	padding:5px;
+}
+

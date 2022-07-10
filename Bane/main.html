@@ -2,49 +2,43 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no" />
+    <!--Sve isto kao nemanji + imao si jedan </form> tag viska, pazi na indentaciju-->
     <link rel="stylesheet" href="./css/css.css" />
     <title>ИСПОЈ</title>
   </head>
   <body>
-    <h1>
-      Информациони систем пријаве за одсуство из јединице
-    </h1>
+    <h1>Информациони систем пријаве за одсуство из јединице</h1>
 
     <main>
       <h2>Упиши датум одласка и повратка са викенда и разлог:</h2>
       <form>
-		<article id="datefrom">
+        <article id="datefrom">
           <label for="datefrom">Датум одласка:</label>
-		  <input type="date" id="datefrom" name="datefrom">
-		</article>
-		<article id="dateto">
-           <label for="dateto">Датум повратка:</label>
-		  <input type="date" id="dateto" name="dateto">
-		</article>
-		<article id="radio">
-			<input type="radio" id="obican" name="radio" value="obican">
-			<label for="obican">Обичан</label><br>
-			<input type="radio" id="ddk" name="radio" value="ddk">
-			<label for="ddk">ДДК</label><br>
-			<input type="radio" id="opp" name="radio" value="opp">
-			<label for="opp">ОПП</label><br>
-			<input type="radio" id="nagradno" name="radio" value="nagradno">
-			<label for="nagradno">Наградно</label><br>
-			<input type="radio" id="sluzbeno" name="radio" value="sluzbeno">
-			<label for="sluzbeno">Службено</label><br>
-		</article>
+          <input type="date" id="datefrom" name="datefrom" />
+        </article>
+        <article id="dateto">
+          <label for="dateto">Датум повратка:</label>
+          <input type="date" id="dateto" name="dateto" />
+        </article>
+        <article id="radio">
+          <input type="radio" id="obican" name="radio" value="obican" />
+          <label for="obican">Обичан</label><br />
+          <input type="radio" id="ddk" name="radio" value="ddk" />
+          <label for="ddk">ДДК</label><br />
+          <input type="radio" id="opp" name="radio" value="opp" />
+          <label for="opp">ОПП</label><br />
+          <input type="radio" id="nagradno" name="radio" value="nagradno" />
+          <label for="nagradno">Наградно</label><br />
+          <input type="radio" id="sluzbeno" name="radio" value="sluzbeno" />
+          <label for="sluzbeno">Службено</label><br />
+        </article>
 
         <article id="start">
           <button>ПРИЈАВИ</button>
         </article>
       </form>
       <p id="message"></p>
-      </form>
-      
     </main>
   </body>
 </html>

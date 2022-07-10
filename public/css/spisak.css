@@ -1,20 +1,5 @@
-/*
-Ne ponavljaj ono sto pise u drugom fajlu, kod treba da bude modularan
-jedna stvar u jedan fajl,
-alo hoces pogledaj kako radi SASS(css predkompajler) koji ti omogucava da nestujes kod tipa:
-main{
-  color:red;
+/*Ovde idalje imas stvari koje imas i u style.css, ukloni ih*/
 
-  .somediv{
-    width:20rem;
-
-    a{
-      height:1rem;
-    }
-  }
-}
-Na taj nacin ti sve bude mnogo citljivije, ali ako neces ne moras, ja vas css svakako necu dirati
-*/
 *,
 *::after,
 *::before {

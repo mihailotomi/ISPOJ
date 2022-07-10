@@ -1,0 +1,38 @@
+.container{
+    width: 100%;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+#buttonZaTrue{
+    height: auto;
+    width: fit-content;
+}
+
+#buttonZaFalse{
+    height: fit-content;
+    width: fit-content;
+}
+
+#buttonZaTrue>img{
+    width: 50px;
+    height: 50px;
+}
+
+#buttonZaFalse>img{
+    width: 50px;
+    height: 50px;
+}
+
+button{
+    padding: 5px;
+}
+
+.container>button:first-child{
+    margin-left: 20%;
+}
+
+.container>button:last-child{
+    margin-right: 20%;
+}

@@ -36,3 +36,11 @@ button{
 .container>button:last-child{
     margin-right: 20%;
 }
+
+main article{
+    justify-content: space-around;
+  }
+
+main #start{
+    text-align: left;
+}

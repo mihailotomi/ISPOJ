@@ -7,6 +7,10 @@ const User = require("../models/User");
 const Role = require("../models/Role");
 
 //& CONTROLS
+exports.getLoginPage = (req, res) => {
+  res.render("login");
+};
+
 exports.registerUser = async (req, res) => {
   try {
     const user = await User.addUser(req.body);
@@ -39,7 +43,8 @@ exports.loginUser = async (req, res) => {
     req.session.user = user.toSession();
 
     res.status(200);
-    return res.json(req.session.user);
+    // res.json(req.session.user);
+    res.redirect("/");
   } catch (e) {
     console.error(e);
     return res.status(403).json({ message: e.message });

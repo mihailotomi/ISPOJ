@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/unosprijave.css" />
+    <title>ИСПОЈ</title>
+    <link rel="icon" href="../images/logo.png" type="image/icon type" />
+  </head>
+
+  <body>
+    <h1>Информациони систем пријаве за одсуство из јединице</h1>
+
+    <main>
+      <h2>Упиши датум одласка и повратка са викенда и разлог:</h2>
+      <form>
+        <article id="datefrom">
+          <label for="datefrom">Датум одласка:</label>
+          <input type="date" id="datefrom" name="datefrom" />
+        </article>
+        <article id="dateto">
+          <label for="dateto">Датум повратка:</label>
+          <input type="date" id="dateto" name="dateto" />
+        </article>
+        <article id="radio">
+          <input type="radio" id="obican" name="radio" value="obican" />
+          <label for="obican">Обичан</label><br />
+          <input type="radio" id="ddk" name="radio" value="ddk" />
+          <label for="ddk">ДДК</label><br />
+          <input type="radio" id="opp" name="radio" value="opp" />
+          <label for="opp">ОПП</label><br />
+          <input type="radio" id="nagradno" name="radio" value="nagradno" />
+          <label for="nagradno">Наградно</label><br />
+          <input type="radio" id="sluzbeno" name="radio" value="sluzbeno" />
+          <label for="sluzbeno">Службено</label><br />
+        </article>
+      </form>
+      <article id="start">
+        <button>ПРИЈАВИ</button>
+      </article>
+
+      <p id="message"></p>
+    </main>
+  </body>
+</html>

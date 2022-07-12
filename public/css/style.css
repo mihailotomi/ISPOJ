@@ -16,7 +16,7 @@ button {
 }
 
 body {
-  background-image: url("../../images/m10.jpg");
+  background-image: url("../images/m10.jpg");
   background-size: 100vw 100vh;
   font-family: "Courier New", Courier, monospace;
   font-weight: 600;

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/unosprijave.css" />
+    <title>ИСПОЈ</title>
+    <link rel="icon" href="/images/logo.png" type="image/icon type" />
+  </head>
+
+  <body>
+    <%- include("partials/header.ejs") %>
+
+    <main>
+      <%- include("partials/welcome.ejs") %>
+      <form>
+        <article id="datefrom">
+          <label for="datefrom">Datum odlaska:</label>
+          <input type="date" id="datefrom" name="datefrom" />
+        </article>
+        <article id="dateto">
+          <label for="dateto">Datum povratka:</label>
+          <input type="date" id="dateto" name="dateto" />
+        </article>
+        <% if (types.length > 0) { %>
+        <article id="radio">
+          <% for (let type of types) { %>
+          <span>
+            <input type="radio" name="radio" value="<%= type.id %>" />
+            <label><%= type.name %></label>
+          </span>
+          <% } %>
+        </article>
+        <% } %>
+      </form>
+      <article id="start">
+        <button>ПРИЈАВИ</button>
+      </article>
+
+      <p id="message"></p>
+    </main>
+  </body>
+</html>

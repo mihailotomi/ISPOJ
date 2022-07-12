@@ -24,6 +24,7 @@ module.exports = class User {
 
   toSession = () => {
     return {
+      id: this.id,
       firstName: this.firstName,
       lastName: this.lastName,
       username: this.username,

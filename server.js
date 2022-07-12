@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 const { client, conObject } = require("./db/config");
 const { router: userRouter } = require("./routes/user");
 const { router: applicationsRouter } = require("./routes/application");
+const authController = require("./controllers/auth");
 
 // express app init and config
 const app = express();
@@ -45,13 +46,8 @@ app.use(express.static(__dirname + "/public"));
 app.use("/applications", applicationsRouter);
 app.use(userRouter);
 
-app.get("/", (req, res) => {
-  if (req.session.user) {
-    console.log(req.session.user);
-    res.send(`Dobrodosao ${req.session.user.firstName} ${req.session.user.lastName}`);
-  } else {
-    res.redirect("/login");
-  }
+app.get("/", authController.isAuth, (req, res) => {
+  res.send(`Dobrodosao ${req.session.user.firstName} ${req.session.user.lastName}`);
 });
 
 //listen

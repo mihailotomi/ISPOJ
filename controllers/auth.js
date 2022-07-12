@@ -2,13 +2,22 @@
 const bcrypt = require("bcryptjs");
 
 //modules
-const { client } = require("../db/config");
 const User = require("../models/User");
 const Role = require("../models/Role");
+const cadetController = require("./cadet");
 
 //& CONTROLS
 exports.getLoginPage = (req, res) => {
   res.render("login");
+};
+
+//auth middleware
+exports.isAuth = (req, res, next) => {
+  if (req.session.user) {
+    next();
+  } else {
+    res.redirect("/login");
+  }
 };
 
 exports.registerUser = async (req, res) => {
@@ -44,7 +53,9 @@ exports.loginUser = async (req, res) => {
 
     res.status(200);
     // res.json(req.session.user);
-    res.redirect("/");
+    if (cadetController.isCadet(req.session.user)) {
+      res.redirect("/applications/apply");
+    }
   } catch (e) {
     console.error(e);
     return res.status(403).json({ message: e.message });

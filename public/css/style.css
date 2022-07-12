@@ -10,6 +10,11 @@
   color: rgba(255, 22, 22, 0.781);
 }
 
+input,
+button {
+  cursor: pointer;
+}
+
 body {
   background-image: url("../../images/m10.jpg");
   background-size: 100vw 100vh;

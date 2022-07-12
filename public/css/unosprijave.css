@@ -143,11 +143,9 @@ main #message {
   text-align: center;
   font-size: 26px;
 }
+
 #radio {
-	font-size:25px;
-	padding:5px;
+  font-size: 25px;
+  padding: 5px;
   left: 20%;
 }
-
-
-

@@ -97,7 +97,7 @@ main button {
   width: 30%;
   font-size: 25px;
   background-color: rgba(39, 128, 163, 0.651);
-  border: 1px solid rgba(94, 93, 93, 0.863);
+  border: 2px solid rgba(94, 93, 93, 0.863);
   border-radius: 5px;
 }
 
@@ -190,14 +190,14 @@ table tbody tr td {
   font-size: 20px;
 }
 
-table tr td:first-child{
+table tr td:first-child {
   width: 50px;
 }
 
-table tr td:first-child{
+table tr td:first-child {
   width: 50px;
 }
 
-table td{
+table td {
   padding: 5px 1px;
 }

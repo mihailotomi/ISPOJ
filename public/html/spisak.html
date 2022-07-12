@@ -8,14 +8,21 @@
       Samo stilove za tabelu stavi u csszaspisak, mada je nazovi tabela.css, spisak.css ili nesto tako
       i onda importuj oba css, jer ti niko ne brani da povezes html fajl sa vise css fajlova
     -->
-    <link rel="stylesheet" href="./public/css/style.css" />
-    <link rel="stylesheet" href="./public/css/spisak.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/spisak.css" />
     <title>ИСПОЈ</title>
-    <link rel="icon" href="./images/logo.png" type="image/icon type">
+    <link rel="icon" href="../images/logo.png" type="image/icon type">
   </head>
   <body>
     <h1>Информациони систем пријаве за одсуство из јединице</h1>
-
+    <div id="buttontab">
+      <a href=""><div class="tab active">
+        Списак пријава одсуства
+      </div></a>
+      <a href=""><div class="tab">
+        Списак одобрених одсуства
+      </div></a>
+    </div>
     <main>
       <div class="container">
         <table class="tabela">

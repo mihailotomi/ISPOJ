@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 
 //modules
 const User = require("../models/User");
+const Application = require("../models/Application");
 const Role = require("../models/Role");
 const cadetController = require("./cadet");
 
@@ -53,11 +54,28 @@ exports.loginUser = async (req, res) => {
 
     res.status(200);
     // res.json(req.session.user);
-    if (cadetController.isCadet(req.session.user)) {
+    if (user.isCadet()) {
       res.redirect("/applications/apply");
     }
   } catch (e) {
     console.error(e);
     return res.status(403).json({ message: e.message });
+  }
+};
+
+exports.getInsightPage = async (req, res) => {
+  try {
+    const application = await Application.getById(req.params.id);
+    const currentUser = await User.getById(req.session.user.id);
+    //TO DO- dodaj status i formatiraj datume
+    //samo ja i komandir možemo videti moju prijavu
+    if (currentUser.isCommander() || currentUser.id === application.user.id) {
+      res.render("applicationInsight", { isCommander: currentUser.isCommander(), application });
+    } else {
+      res.redirect("/");
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({ message: error.message });
   }
 };

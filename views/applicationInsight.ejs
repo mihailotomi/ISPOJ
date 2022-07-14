@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/prijava.css" />
+    <title>ИСПОЈ</title>
+    <link rel="icon" href="/images/logo.png" type="image/icon type" />
+  </head>
+
+  <body>
+    <%- include("partials/header.ejs") %>
+
+    <main>
+      <h2>Uvid prijave</h2>
+      <form>
+        <article id="Vc">
+          <label for="">Ime i prezime:</label
+          ><span class=""><%= application.user.firstName %> <%= application.user.lastName %></span>
+        </article>
+        <article id="alpha">
+          <label>Datum odlaska: </label
+          ><span class=""
+            ><%= `${application.dateFrom.getDate()}. ${application.dateFrom.getMonth()+1}.
+            ${application.dateFrom.getFullYear()}. godine` %></span
+          >
+        </article>
+        <article id="start">
+          <label>Datum povratka: </label
+          ><span class=""
+            ><%= `${application.dateTo.getDate()}. ${application.dateTo.getMonth()+1}.
+            ${application.dateTo.getFullYear()}. godine` %></span
+          >
+        </article>
+      </form>
+      <% if(isCommander){ %>
+      <div class="container">
+        <button id="buttonZaTrue">
+          <img src="../images/true.png" alt="" />
+        </button>
+        <button id="buttonZaFalse">
+          <img src="../images/false.png" alt="" />
+        </button>
+      </div>
+      <% } %>
+    </main>
+  </body>
+</html>

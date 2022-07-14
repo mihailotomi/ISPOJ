@@ -14,29 +14,29 @@
 
     <main>
       <%- include("partials/welcome.ejs") %>
-      <form>
+      <form action="/applications/apply" method="POST">
         <article id="datefrom">
-          <label for="datefrom">Datum odlaska:</label>
-          <input type="date" id="datefrom" name="datefrom" />
+          <label for="dateFrom">Datum odlaska:</label>
+          <input type="date" id="datefrom" name="dateFrom" />
         </article>
         <article id="dateto">
-          <label for="dateto">Datum povratka:</label>
-          <input type="date" id="dateto" name="dateto" />
+          <label for="dateTo">Datum povratka:</label>
+          <input type="date" id="dateto" name="dateTo" />
         </article>
         <% if (types.length > 0) { %>
         <article id="radio">
           <% for (let type of types) { %>
           <span>
-            <input type="radio" name="radio" value="<%= type.id %>" />
+            <input type="radio" name="typeId" value="<%= type.id %>" />
             <label><%= type.name %></label>
           </span>
           <% } %>
         </article>
         <% } %>
+        <article id="start">
+          <button type="submit">ПРИЈАВИ</button>
+        </article>
       </form>
-      <article id="start">
-        <button>ПРИЈАВИ</button>
-      </article>
 
       <p id="message"></p>
     </main>

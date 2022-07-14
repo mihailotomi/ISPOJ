@@ -1,0 +1,42 @@
+main form {
+  display: grid;
+  grid-template-columns: [inputs1] 100%;
+  grid-template-rows: [row1] 1fr [row2] 1fr;
+}
+
+main label {
+  display: inline-block;
+  width: 330px;
+}
+
+main #start {
+  grid-column-start: inputs1;
+  grid-column-end: inputs3;
+  grid-row-start: row4;
+  text-align: center;
+}
+
+main #Vc,
+main #trp,
+main #alpha {
+  grid-column-start: inputs1;
+}
+
+main #DOsC,
+main #S {
+  grid-column-start: inputs2;
+}
+
+main #Vc,
+main #DOsC {
+  grid-row-start: row1;
+}
+
+main #alpha,
+main #S {
+  grid-row-start: row2;
+}
+
+main #trp {
+  grid-row-start: row3;
+}

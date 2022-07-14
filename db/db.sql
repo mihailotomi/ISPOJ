@@ -31,6 +31,8 @@ CREATE TABLE applications (
     typeid int NOT NULL,
     statusid int NOT NULL,
     userid int NOT NULL,
+    datefrom date NOT NULL,
+    dateto date NOT NULL,
     FOREIGN KEY (typeid) REFERENCES types(id),
     FOREIGN KEY (statusid) REFERENCES statuses(id),
     FOREIGN KEY (userid) REFERENCES users(id)

@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 //modules
 const { client } = require("../db/config");
 const Role = require("./Role");
+const { CADET, COMMANDER } = require("../db/constants");
 
 //@ MODEL
 module.exports = class User {
@@ -18,6 +19,10 @@ module.exports = class User {
     this.role = role;
   }
 
+  getId = () => {
+    return this.id;
+  };
+
   getRoleName = () => {
     return this.role.getName();
   };
@@ -30,6 +35,14 @@ module.exports = class User {
       username: this.username,
       role: this.getRoleName(),
     };
+  };
+
+  isCadet = () => {
+    return this.role.getName() === CADET;
+  };
+
+  isCommander = () => {
+    return this.role.getName() === COMMANDER;
   };
 
   static fromRaw = async (rawUser) => {

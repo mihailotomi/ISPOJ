@@ -1,7 +1,7 @@
-const COMMANDER = "commander";
-
+//modules
 const User = require("../models/User");
 const Role = require("../models/Role");
+const COMMANDER = require("../db/constants");
 
 exports.isCommander = (user) => {
   return user.role === COMMANDER;

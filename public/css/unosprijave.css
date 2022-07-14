@@ -115,7 +115,12 @@ main #message {
 }
 
 #radio span {
+  flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#radio span label {
+  margin-left: 0.25rem;
 }

@@ -10,4 +10,8 @@ router.get("/apply", authController.isAuth, cadetController.isCadetMiddleware, a
   res.render("apply", { user: req.session.user, message: "popuni prijavu", types });
 });
 
+router.post("/apply", authController.isAuth, cadetController.isCadetMiddleware, cadetController.applyForWeekend);
+
+router.get("/insight/:id", authController.isAuth, authController.getInsightPage);
+
 module.exports = { router };

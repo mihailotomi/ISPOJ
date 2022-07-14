@@ -8,6 +8,8 @@ const { client, conObject } = require("./db/config");
 const { router: userRouter } = require("./routes/user");
 const { router: applicationsRouter } = require("./routes/application");
 const authController = require("./controllers/auth");
+const User = require("./models/User");
+const Application = require("./models/Application");
 
 // express app init and config
 const app = express();
@@ -46,8 +48,17 @@ app.use(express.static(__dirname + "/public"));
 app.use("/applications", applicationsRouter);
 app.use(userRouter);
 
-app.get("/", authController.isAuth, (req, res) => {
-  res.send(`Dobrodosao ${req.session.user.firstName} ${req.session.user.lastName}`);
+app.get("/", authController.isAuth, async (req, res) => {
+  const user = await User.getById(req.session.user.id);
+  if (user.isCadet()) {
+    const hasApplied = await Application.hasApplied(user.getId());
+    if (hasApplied) {
+      const application = await Application.getByUserId(user.getId());
+      res.redirect(`/applications/insight/${application.getId()}`);
+    } else {
+      res.redirect("applications/apply");
+    }
+  }
 });
 
 //listen

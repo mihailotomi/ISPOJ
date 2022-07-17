@@ -1,8 +1,9 @@
-const User = require("../models/User");
-const Role = require("../models/Role");
+//modules
 const Application = require("../models/Application");
+const Type = require("../models/Type");
 const { CADET } = require("../db/constants");
 
+//@ CONTROLS
 exports.isCadetMiddleware = (req, res, next) => {
   if (req.session.user.role === CADET) {
     next();
@@ -11,10 +12,13 @@ exports.isCadetMiddleware = (req, res, next) => {
   }
 };
 
+exports.getApplyPage = async (req, res) => {
+  const types = await Type.getAll();
+  res.render("apply", { user: req.session.user, message: "popuni prijavu", types });
+};
+
 exports.applyForWeekend = async (req, res, next) => {
   try {
-    //TO DO - refaktorisi
-    const hasApplied = await Application.hasApplied(req.session.user.id);
     const application = await Application.apply({ ...req.body, userId: req.session.user.id });
     res.redirect("/");
   } catch (error) {

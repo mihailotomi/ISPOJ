@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/spisak.css" />
+    <title>ИСПОЈ</title>
+    <link rel="icon" href="/images/logo.png" type="image/icon type" />
+  </head>
+  <body>
+    <%- include("partials/header.ejs") %> <%- include("partials/logout.ejs") %>
+    <%-include("partials/commanderNavigation.ejs") %>
+    <main>
+      <div class="container">
+        <% if(applications.length>0){ %>
+        <table class="tabela">
+          <thead>
+            <tr>
+              <h2>Spisak prijavljenih za odsustvo</h2>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Redni broj</th>
+              <th>Ime i prezime</th>
+              <th>Tip vikenda</th>
+              <th>Prijava</th>
+            </tr>
+            <% for(i=0; i<applications.length; i++){ %>
+            <tr>
+              <td><%= i+1 %></td>
+              <td><%= applications[i].user.getFullName() %></td>
+              <td><%= applications[i].getType() %></td>
+              <td><button class="bzat" ><a href="/applications/insight/<%= applications[i].getId() %>">Vidi prijavu</a></button></td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+        <% } else{ %>
+        <h1>Nema novih prijava</h1>
+        <% } %>
+      </div>
+    </main>
+  </body>
+</html>

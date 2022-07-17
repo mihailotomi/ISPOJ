@@ -150,7 +150,6 @@ main #message {
   height: 100%;
 }
 
-/*nemoj ovakva imena klasa*/
 .bzat {
   width: fit-content;
   height: 30px;
@@ -201,40 +200,37 @@ table td {
   padding: 5px 1px;
 }
 
-#buttontab{
+#buttontab {
   display: flex;
   flex-wrap: nowrap;
   margin-left: auto;
   margin-right: auto;
   background-color: #063b06a0;
-  font-size: 40px;
+  font-size: 30px;
   color: white;
-  border: 3px solid black;
-  margin-top: 2px;
+  margin-top: 50px;
   width: fit-content;
   overflow: hidden;
   margin-bottom: 10px;
 }
 
-a{
+.link {
   display: block;
   padding: 5px;
   text-decoration: none;
   flex-grow: 1;
   text-align: center;
   color: white;
-  border: 2px solid white;
+  border: 2px solid black;
   transition: 1s;
 }
 
-a:active{
-  color: red;
-  background-color: #ffffff90;
-  font-size: 45px;
+.link.active {
+  color: yellow;
 }
 
-a:hover{
-  color: red;
-  background-color: #ffffff;
-  font-size: 42px;
+.link:active,
+.link:hover {
+  opacity: 0.75;
+  color: yellow;
 }

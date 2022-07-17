@@ -5,6 +5,11 @@
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 *::selection {
   background-color: yellow;
   color: rgba(255, 22, 22, 0.781);
@@ -13,6 +18,11 @@
 input,
 button {
   cursor: pointer;
+}
+
+main {
+  max-height: 69%;
+  overflow-y: scroll;
 }
 
 main h2 {
@@ -50,6 +60,25 @@ main article {
   justify-content: center;
   padding: 20px 10px;
   font-size: 30px;
+}
+
+.logout {
+  position: absolute;
+  top: 60px;
+  right: 50px;
+  height: 36px;
+  width: 180px;
+  font-size: 25px;
+  background-color: rgba(239, 28, 63, 0.8);
+  border: 2px solid rgba(94, 93, 93, 0.863);
+  border-radius: 5px;
+}
+
+.logout:focus,
+.logout:active,
+.logout:hover {
+  border: 2px solid rgba(3, 3, 3, 0.863);
+  background-color: rgba(239, 28, 63, 0.5);
 }
 
 main button {

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/spisak.css" />
+    <link rel="stylesheet" href="/css/odobreno.css" />
+    <title>ИСПОЈ</title>
+    <link rel="icon" href="/images/logo.png" type="image/icon type" />
+  </head>
+  <body>
+    <%- include("partials/header.ejs") %> <%- include("partials/logout.ejs") %>
+    <%-include("partials/commanderNavigation.ejs") %>
+
+    <main>
+      <div class="container">
+        <% if(applications.length>0){ %>
+        <table class="tabela">
+          <thead>
+            <tr>
+              <h2>Spisak odobrenih odsustava:</h2>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Redni broj</th>
+              <th>Ime i prezime</th>
+              <th>Tip Vikenda</th>
+              <th>Datum odlaska</th>
+              <th>Datum povratka</th>
+              <th>Adresa</th>
+              <th>Broj telefona</th>
+            </tr>
+            <% for(i=0; i<applications.length; i++){ %>
+            <tr>
+              <td><%= i+1 %></td>
+              <td><%= applications[i].user.getFullName() %></td>
+              <td><%= applications[i].getType() %></td>
+              <td class="bold"><%= `${applications[i].dateFrom.getDate()}. ${applications[i].dateFrom.getMonth()+1}.
+            ${applications[i].dateFrom.getFullYear()}. godine` %></td>
+              <td class="bold"><%= `${applications[i].dateTo.getDate()}. ${applications[i].dateTo.getMonth()+1}.
+            ${applications[i].dateTo.getFullYear()}. godine` %></td>
+              <td><%= applications[i].user.getAdress() %></td>
+              <td><%= applications[i].user.getPhone() %></td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+        <% } else{ %>
+        <h1>Nema odobrenih odsustava</h1>
+        <% } %>
+      </div>
+    </main>
+  </body>
+</html>

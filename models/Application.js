@@ -3,7 +3,7 @@ const { client } = require("../db/config");
 const User = require("./User");
 const Type = require("./Type");
 const Status = require("./Status");
-const { PENDING } = require("../db/constants");
+const { PENDING, APPROVED, DECLINED } = require("../db/constants");
 
 //@ MODEL
 module.exports = class Application {
@@ -16,14 +16,52 @@ module.exports = class Application {
     this.dateTo = dateTo;
   }
 
+  approve = async () => {
+    const status = await Status.getByName(APPROVED);
+
+    const data = await client.query("UPDATE applications SET statusid = $1 WHERE id = $2 RETURNING *", [
+      status.getId(),
+      this.getId(),
+    ]);
+
+    const rawApplication = data.rows[0];
+
+    return await Application.fromRaw(rawApplication);
+  };
+
+  decline = async () => {
+    const status = await Status.getByName(DECLINED);
+
+    const data = await client.query("UPDATE applications SET statusid = $1 WHERE id = $2 RETURNING *", [
+      status.getId(),
+      this.getId(),
+    ]);
+
+    const rawApplication = data.rows[0];
+
+    return await Application.fromRaw(rawApplication);
+  };
+
   getId() {
     return this.id;
+  }
+
+  getType = () => {
+    return this.type.getName();
+  };
+
+  getStatus() {
+    return this.status.getName();
+  }
+
+  isPending() {
+    return this.getStatus() === PENDING;
   }
 
   static hasApplied = async (userId) => {
     try {
       const data = await client.query(
-        "SELECT count(*) FROM applications WHERE userid = $1 AND (datefrom > now()::date)",
+        "SELECT count(*) as count FROM applications WHERE userid = $1 AND (datefrom >= now()::date)",
         [userId]
       );
       const count = data.rows[0].count;
@@ -72,6 +110,36 @@ module.exports = class Application {
       return await Application.fromRaw(rawApplication);
     } catch (error) {
       throw new Error(error.message || "Greska pri nalazenju prijave");
+    }
+  };
+
+  static getAllApproved = async () => {
+    try {
+      const data = await client.query(
+        "SELECT applications.id, userid, typeid, statusid, datefrom, dateto FROM applications INNER JOIN statuses ON applications.statusid = statuses.id WHERE statusname = $1",
+        [APPROVED]
+      );
+
+      const applications = await Promise.all(data.rows.map(Application.fromRaw));
+
+      return applications;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  static getAllPending = async () => {
+    try {
+      const data = await client.query(
+        "SELECT applications.id, userid, typeid, statusid, datefrom, dateto FROM applications INNER JOIN statuses ON applications.statusid = statuses.id WHERE statusname = $1",
+        [PENDING]
+      );
+
+      const applications = await Promise.all(data.rows.map(Application.fromRaw));
+
+      return applications;
+    } catch (error) {
+      console.error(error);
     }
   };
 

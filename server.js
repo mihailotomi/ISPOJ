@@ -10,6 +10,7 @@ const { router: applicationsRouter } = require("./routes/application");
 const authController = require("./controllers/auth");
 const User = require("./models/User");
 const Application = require("./models/Application");
+const { CADET, COMMANDER } = require("./db/constants");
 
 // express app init and config
 const app = express();
@@ -50,14 +51,24 @@ app.use(userRouter);
 
 app.get("/", authController.isAuth, async (req, res) => {
   const user = await User.getById(req.session.user.id);
-  if (user.isCadet()) {
-    const hasApplied = await Application.hasApplied(user.getId());
-    if (hasApplied) {
-      const application = await Application.getByUserId(user.getId());
-      res.redirect(`/applications/insight/${application.getId()}`);
-    } else {
-      res.redirect("applications/apply");
-    }
+
+  switch (user.getRoleName()) {
+    case CADET:
+      const hasApplied = await Application.hasApplied(user.getId());
+      if (hasApplied) {
+        const application = await Application.getByUserId(user.getId());
+        res.redirect(`/applications/insight/${application.getId()}`);
+      } else {
+        res.redirect("applications/apply");
+      }
+      break;
+
+    case COMMANDER:
+      res.redirect("/applications/pending");
+      break;
+    default:
+      req.session.destroy();
+      res.send("wqee");
   }
 });
 

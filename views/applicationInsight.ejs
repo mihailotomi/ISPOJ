@@ -10,11 +10,11 @@
   </head>
 
   <body>
-    <%- include("partials/header.ejs") %>
+    <%- include("partials/header.ejs") %> <%- include("partials/logout.ejs") %>
 
     <main>
       <h2>Uvid prijave</h2>
-      <form>
+      <section>
         <article id="Vc">
           <label for="">Ime i prezime:</label
           ><span class=""><%= application.user.firstName %> <%= application.user.lastName %></span>
@@ -33,15 +33,27 @@
             ${application.dateTo.getFullYear()}. godine` %></span
           >
         </article>
-      </form>
-      <% if(isCommander){ %>
+        <article>
+          <label>Status:</label>
+          <span><%= application.getStatus() %></span>
+        </article>
+        <article>
+          <label>Tip prijave:</label>
+          <span><%= application.getType() %></span>
+        </article>
+      </section>
+      <% if(isCommander && isPending){ %>
       <div class="container">
-        <button id="buttonZaTrue">
-          <img src="../images/true.png" alt="" />
-        </button>
-        <button id="buttonZaFalse">
-          <img src="../images/false.png" alt="" />
-        </button>
+        <form action="/applications/approve/<%= application.getId() %>" method="POST">
+          <button id="buttonZaTrue">
+            <img src="/images/true.png" alt="" />
+          </button>
+        </form>
+        <form action="/applications/decline/<%= application.getId() %>" method="POST">
+          <button id="buttonZaFalse">
+            <img src="/images/false.png" alt="" />
+          </button>
+        </form>
       </div>
       <% } %>
     </main>

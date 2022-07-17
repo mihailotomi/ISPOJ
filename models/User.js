@@ -23,6 +23,18 @@ module.exports = class User {
     return this.id;
   };
 
+  getAdress = () => {
+    return this.adress;
+  };
+
+  getPhone = () => {
+    return this.phone;
+  };
+
+  getFullName = () => {
+    return `${this.firstName} ${this.lastName}`;
+  };
+
   getRoleName = () => {
     return this.role.getName();
   };
@@ -116,7 +128,7 @@ module.exports = class User {
   static getById = async (id) => {
     try {
       const data = await client.query(
-        "SELECT id, firstName, lastName, username, password, roleid FROM users WHERE id = $1",
+        "SELECT id, firstName, lastName, username, password, roleid, adress, phone FROM users WHERE id = $1",
         [id]
       );
 
